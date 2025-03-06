@@ -157,7 +157,7 @@ pub const rlShaderAttributeDataType = enum(c_uint) {
     rl_shader_attrib_vec4 = 3,
 };
 
-pub const rlFramebufferAttachType = enum(c_uint) {
+pub const rlFramebufferAttachType = enum(c_int) {
     rl_attachment_color_channel0 = 0,
     rl_attachment_color_channel1 = 1,
     rl_attachment_color_channel2 = 2,
@@ -170,7 +170,7 @@ pub const rlFramebufferAttachType = enum(c_uint) {
     rl_attachment_stencil = 200,
 };
 
-pub const rlFramebufferAttachTextureType = enum(c_uint) {
+pub const rlFramebufferAttachTextureType = enum(c_int) {
     rl_attachment_cubemap_positive_x = 0,
     rl_attachment_cubemap_negative_x = 1,
     rl_attachment_cubemap_positive_y = 2,
