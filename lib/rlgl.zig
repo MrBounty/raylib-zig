@@ -820,7 +820,7 @@ pub fn rlDrawVertexArrayElementsInstanced(offset: i32, count: i32, buffer: ?*con
 }
 
 /// Load texture data
-pub fn rlLoadTexture(data: ?*const anyopaque, width: i32, height: i32, format: i32, mipmapCount: i32) u32 {
+pub fn rlLoadTexture(data: ?*const anyopaque, width: i32, height: i32, format: rl.PixelFormat, mipmapCount: i32) u32 {
     return @as(u32, cdef.rlLoadTexture(data, @as(c_int, width), @as(c_int, height), @as(c_int, format), @as(c_int, mipmapCount)));
 }
 
@@ -875,7 +875,7 @@ pub fn rlLoadFramebuffer() u32 {
 }
 
 /// Attach texture/renderbuffer to a framebuffer
-pub fn rlFramebufferAttach(fboId: u32, texId: u32, attachType: i32, texType: i32, mipLevel: i32) void {
+pub fn rlFramebufferAttach(fboId: u32, texId: u32, attachType: rlFramebufferAttachType, texType: rlFramebufferAttachTextureType, mipLevel: i32) void {
     cdef.rlFramebufferAttach(@as(c_uint, fboId), @as(c_uint, texId), @as(c_int, attachType), @as(c_int, texType), @as(c_int, mipLevel));
 }
 
@@ -920,7 +920,7 @@ pub fn rlGetLocationAttrib(shaderId: u32, attribName: [:0]const u8) i32 {
 }
 
 /// Set shader value uniform
-pub fn rlSetUniform(locIndex: i32, value: *const anyopaque, uniformType: i32, count: i32) void {
+pub fn rlSetUniform(locIndex: i32, value: *const anyopaque, uniformType: rl.ShaderUniformDataType, count: i32) void {
     cdef.rlSetUniform(@as(c_int, locIndex), value, @as(c_int, uniformType), @as(c_int, count));
 }
 
